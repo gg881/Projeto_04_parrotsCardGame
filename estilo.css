@@ -1,0 +1,57 @@
+body{
+    background-color: #EEF9BF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    color: #75B79E;
+    font-weight: 700;
+    /*font-size: 56px;*/
+    font-size: 56px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+.carta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 117px;
+    height: 146px;
+    border-radius: 5px;
+    background-color: #A7E9AF;
+    margin-right: 20px;
+    margin-bottom: 10px;
+        
+}
+
+.cartavirada{
+    background-color: green;
+    /*z-index: 2;*/
+}
+
+.cartas{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.frentecarta{
+    width: 100px;
+    height: 100px;
+   
+}
+
+.cartavirada{
+
+}
+
