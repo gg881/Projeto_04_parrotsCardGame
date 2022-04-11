@@ -13,14 +13,10 @@ while (resultado<4 || resultado>15 || resultado%2 == 1){
     resultado = prompt("Coloque um número valido. Valores pares entre 4 e 14. ");
 }
 
-//alert("Você escolheu: " + resultado + " cartas");
-
 function criarBaralho(numero){
     for (i=0; i<(numero/2); i++){
         baralho.push(cartas[i]);
-        //console.log(cartas[i]);
         baralho.push(cartas[i]);
-        
     }
 }
 
@@ -32,20 +28,13 @@ function comparador() {
 
 baralho.sort(comparador);
 
-
 function darCartas(numero){
     for (i=0; i<numero; i++){
         let cartas = document.querySelector(".cartas");
         cartas.innerHTML += `<div class="carta" id = "${i}" onClick="virarCarta(this)"><img class="frentecarta" src="imagens/front.png"></div>`
         jaViradas.push(0);
-        // cartas.innerHTML += `<div class="carta" id = "${i}" onClick="virarCarta(this)">
-         //                       <img class="frentecarta" src="imagens/${baralho[i]}"></div>`
-
     }
-
 }
-
-
 
 function virarCarta(element){
     numeroCliques++;
@@ -65,42 +54,29 @@ function virarCarta(element){
                     }
         //se não, desvirar as cartas
         setTimeout(desvirarCartas, 1000);
-      
-
-
         virado=0;
     }
 }
 
 function  desvirarCartas(){
-    //let cartas = document.getElementById(idAnterior);
-    //cartas.innerHTML = `<img class="frentecarta" src="imagens/front.png"></img>`
     let cartas = document.querySelectorAll(".carta");
    
    for (let i=0; i<jaViradas.length; i++){
        if (jaViradas[i]===0){
         cartas[i].innerHTML = `<img class="frentecarta" src="imagens/front.png"></img>`;
-        //console.log(i);
        }
    }
-   
    verificarSeGanhou();
-    
 }
 
 function verificarSeGanhou(){
     let ganhou=0;
     for (let i=0; i<jaViradas.length; i++){
         if (jaViradas[i]===1){ ganhou++; }
-        
     }
     if (jaViradas.length===ganhou){
         alert(`Você ganhou em ${numeroCliques} jogadas!`);
     }
-
 }
-
-
-//alert(baralho[1]);
 
 darCartas(resultado);
