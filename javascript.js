@@ -62,7 +62,7 @@ function virarCarta(element){
             jaViradas[elementar]=1;
                     }
         //se não, desvirar as cartas
-        setTimeout(desvirarCartas, 1200);
+        setTimeout(desvirarCartas, 2000);
       
 
 
@@ -74,11 +74,29 @@ function  desvirarCartas(){
     //let cartas = document.getElementById(idAnterior);
     //cartas.innerHTML = `<img class="frentecarta" src="imagens/front.png"></img>`
     let cartas = document.querySelectorAll(".carta");
-    console.log(cartas);
-
+   
+   for (let i=0; i<jaViradas.length; i++){
+       if (jaViradas[i]===0){
+        cartas[i].innerHTML = `<img class="frentecarta" src="imagens/front.png"></img>`;
+        //console.log(i);
+       }
+   }
+   
+   verificarSeGanhou();
     //alert("tempo");
 }
 
+function verificarSeGanhou(){
+    let ganhou=0;
+    for (let i=0; i<jaViradas.length; i++){
+        if (jaViradas[i]===1){ ganhou++; }
+        
+    }
+    if (jaViradas.length===ganhou){
+        alert("Voce ganhou");
+    }
+
+}
 
 
 //alert(baralho[1]);
