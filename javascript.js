@@ -5,6 +5,7 @@ let virado = 0;  //para comparar a segunda carta
 let idAnterior=0;
 let resultado = prompt("Coloque o numero de cartas. Valores pares entre 4 e 14.");
 let jaViradas = [];
+let numeroCliques=0;
 
 resultado = parseInt(resultado);
 
@@ -47,6 +48,7 @@ function darCartas(numero){
 
 
 function virarCarta(element){
+    numeroCliques++;
     if (virado===0){
     let elementar = element.id; //salva o numero da carta que foi clicado
     element.innerHTML = `<img class="frentecarta" src="imagens/${baralho[elementar]}">`
@@ -62,7 +64,7 @@ function virarCarta(element){
             jaViradas[elementar]=1;
                     }
         //se não, desvirar as cartas
-        setTimeout(desvirarCartas, 2000);
+        setTimeout(desvirarCartas, 1000);
       
 
 
@@ -83,7 +85,7 @@ function  desvirarCartas(){
    }
    
    verificarSeGanhou();
-    //alert("tempo");
+    
 }
 
 function verificarSeGanhou(){
@@ -93,7 +95,7 @@ function verificarSeGanhou(){
         
     }
     if (jaViradas.length===ganhou){
-        alert("Voce ganhou");
+        alert(`Você ganhou em ${numeroCliques} jogadas!`);
     }
 
 }

@@ -11,8 +11,10 @@ h1{
     font-weight: 700;
     /*font-size: 56px;*/
     font-size: 56px;
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 47px;
     justify-items: center;
+    align-items: center;
 }
 
 .carta{
@@ -23,8 +25,8 @@ h1{
     height: 146px;
     border-radius: 5px;
     background-color: #A7E9AF;
-    margin-right: 20px;
-    margin-bottom: 10px;
+    margin-right: 34px;
+    margin-bottom: 34px;
         
 }
 
@@ -58,6 +60,15 @@ img{
 }
 
 .cartavirada{
+
+}
+
+@media (max-width: 400px){
+    h1{
+        font-size: 36px;
+        width: 98%;
+    }
+
 
 }
 
