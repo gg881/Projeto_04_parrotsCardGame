@@ -1,8 +1,10 @@
 
 let baralho = [];
 let cartas = ["bobrossparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "unicornparrot.gif" ];
-
+let virado = 0;  //para comparar a segunda carta
+let idAnterior=0;
 let resultado = prompt("Coloque o numero de cartas. Valores pares entre 4 e 14.");
+let jaViradas = [];
 
 resultado = parseInt(resultado);
 
@@ -17,6 +19,7 @@ function criarBaralho(numero){
         baralho.push(cartas[i]);
         //console.log(cartas[i]);
         baralho.push(cartas[i]);
+        
     }
 }
 
@@ -32,17 +35,51 @@ baralho.sort(comparador);
 function darCartas(numero){
     for (i=0; i<numero; i++){
         let cartas = document.querySelector(".cartas");
-        //cartas.innerHTML += `<div class="carta"><img class="frentecarta" src="imagens/front.png"></div>`
-        cartas.innerHTML += `<div class="carta" onClick="virarCarta(this)"><img class="frentecarta" src="imagens/${baralho[i]}"></div>`
+        cartas.innerHTML += `<div class="carta" id = "${i}" onClick="virarCarta(this)"><img class="frentecarta" src="imagens/front.png"></div>`
+        jaViradas.push(0);
+        // cartas.innerHTML += `<div class="carta" id = "${i}" onClick="virarCarta(this)">
+         //                       <img class="frentecarta" src="imagens/${baralho[i]}"></div>`
 
     }
 
 }
 
+
+
 function virarCarta(element){
-   // element.classList.add("virada");
-    element.innerHTML = `<div class="carta"><img class="frentecarta" src="imagens/front.png"></div>`
+    if (virado===0){
+    let elementar = element.id; //salva o numero da carta que foi clicado
+    element.innerHTML = `<img class="frentecarta" src="imagens/${baralho[elementar]}">`
+    idAnterior=elementar;
+    virado=1;
+    }
+    else if (virado === 1){
+    let elementar = element.id; 
+    idAtual = elementar;
+    element.innerHTML = `<img class="frentecarta" src="imagens/${baralho[elementar]}">`
+        if ((baralho[idAnterior]===baralho[elementar]) && (idAnterior!==elementar)    ){
+            jaViradas[idAnterior]=1;
+            jaViradas[elementar]=1;
+                    }
+        //se não, desvirar as cartas
+        setTimeout(desvirarCartas, 1200);
+      
+
+
+        virado=0;
+    }
 }
+
+function  desvirarCartas(){
+    //let cartas = document.getElementById(idAnterior);
+    //cartas.innerHTML = `<img class="frentecarta" src="imagens/front.png"></img>`
+    let cartas = document.querySelectorAll(".carta");
+    console.log(cartas);
+
+    //alert("tempo");
+}
+
+
 
 //alert(baralho[1]);
 
